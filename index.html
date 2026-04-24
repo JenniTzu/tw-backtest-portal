@@ -118,6 +118,11 @@ body{
         <span class="tb-name">敏感度分析</span>
         
       </button>
+      <button class="tab-btn" onclick="switchTab(7, this)">
+        <span class="tb-icon">🛡️</span>
+        <span class="tb-name">BH底倉+逢跌加碼</span>
+        <span class="tb-badge">新策略</span>
+      </button>
 </div>
 
 <!-- Panels -->
@@ -3164,6 +3169,221 @@ new Chart(document.getElementById('tw50ValueChart'), {
 </html>
 "
               title="敏感度分析"
+              loading="lazy"
+              sandbox="allow-scripts allow-same-origin"></iframe>
+    </div>
+    <div class="tab-panel" id="panel-7">
+      <iframe srcdoc="<!DOCTYPE html>
+<html lang=&quot;zh-TW&quot;>
+<head>
+<meta charset=&quot;UTF-8&quot;>
+<meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;>
+<title>BH底倉+逢跌加碼回復出場</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:#F0F4F8;color:#1E293B;line-height:1.6}
+.header{background:linear-gradient(135deg,#065F46 0%,#059669 100%);padding:28px 32px;border-bottom:2px solid #047857}
+.header h1{font-size:1.2rem;font-weight:800;color:#fff}
+.header .sub{color:#A7F3D0;font-size:.8rem;margin-top:4px}
+.container{max-width:960px;margin:0 auto;padding:28px 20px}
+.section-title{font-size:.78rem;text-transform:uppercase;letter-spacing:.07em;color:#6B7280;font-weight:600;margin-bottom:12px;margin-top:28px}
+/* Metrics row */
+.metrics-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-bottom:8px}
+.metric-card{background:#fff;border-radius:10px;padding:16px 18px;border:1px solid #E5E7EB}
+.mc-label{font-size:.68rem;color:#9CA3AF;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
+.mc-val{font-size:1.25rem;font-weight:800;color:#059669}
+.mc-val.highlight{color:#DC2626}
+.mc-val.neutral{color:#1E293B}
+/* KV grid */
+.kv-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:8px}
+.kv-card{background:#fff;border-radius:10px;padding:20px;border:1px solid #E5E7EB}
+.kv-card h3{font-size:.82rem;font-weight:700;color:#374151;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #F1F5F9}
+.kv-row{display:flex;justify-content:space-between;padding:5px 0;font-size:.83rem;border-bottom:1px solid #F9FAFB}
+.kv-row:last-child{border-bottom:none}
+.kv-key{color:#6B7280}
+.kv-val{font-weight:600;color:#1E293B}
+.kv-val.green{color:#059669}
+.kv-val.red{color:#DC2626}
+.kv-val.warn{color:#D97706}
+/* Year table */
+table{width:100%;border-collapse:collapse;background:#fff;border-radius:10px;overflow:hidden;font-size:.83rem;margin-bottom:8px}
+thead{background:#065F46;color:#fff}
+thead th{padding:10px 12px;text-align:right;font-size:.72rem;text-transform:uppercase;letter-spacing:.05em}
+thead th:first-child,tbody td:first-child{text-align:left}
+tbody tr{border-bottom:1px solid #F1F5F9}
+tbody tr:last-child{border-bottom:none}
+tbody tr:hover{background:#F0FDF4}
+tbody td{padding:9px 12px;text-align:right}
+td.warn-row{background:#FFFBEB!important}
+/* Scenario cards */
+.scenario-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-bottom:8px}
+.scenario-card{background:#fff;border-radius:10px;padding:18px;border:1px solid #E5E7EB}
+.sc-badge{display:inline-block;padding:2px 10px;border-radius:12px;font-size:.7rem;font-weight:700;margin-bottom:10px}
+.sc-badge.calm{background:#DBEAFE;color:#1D4ED8}
+.sc-badge.trigger{background:#D1FAE5;color:#065F46}
+.sc-badge.holding{background:#FEF3C7;color:#92400E}
+.sc-title{font-size:.9rem;font-weight:700;color:#1E293B;margin-bottom:8px}
+.sc-cond{font-size:.75rem;color:#6B7280;background:#F8FAFC;border-radius:6px;padding:6px 10px;margin-bottom:10px}
+.sc-action{font-size:.82rem;color:#374151;line-height:1.7}
+.sc-action li{list-style:none;padding:3px 0;border-bottom:1px solid #F1F5F9}
+.sc-action li:last-child{border-bottom:none}
+.sc-action li::before{content:&quot;→ &quot;;color:#059669;font-weight:700}
+/* Capital table */
+.capital-tbl{background:#fff;border-radius:10px;overflow:hidden;font-size:.83rem;margin-bottom:8px}
+.capital-tbl thead{background:#374151}
+/* Alert box */
+.alert{border-radius:10px;padding:16px 20px;margin-bottom:16px;font-size:.85rem;line-height:1.7}
+.alert.green{background:#D1FAE5;border-left:4px solid #059669;color:#065F46}
+.alert.yellow{background:#FEF3C7;border-left:4px solid #D97706;color:#92400E}
+.alert.blue{background:#DBEAFE;border-left:4px solid #1D4ED8;color:#1E40AF}
+.footer{text-align:center;font-size:.7rem;color:#9CA3AF;padding:24px;margin-top:8px}
+</style>
+</head>
+<body>
+<div class=&quot;header&quot;>
+  <h1>🛡️ BH底倉 + 逢跌加碼回復出場策略</h1>
+  <div class=&quot;sub&quot;>QQQ 回測 2022-01-04 ～ 2026-04-23（4.3 年）｜每月 $1,000 定額 + 每次 $2,000 加碼</div>
+</div>
+<div class=&quot;container&quot;>
+
+<div class=&quot;section-title&quot;>策略總覽</div>
+<div class=&quot;metrics-row&quot;>
+  <div class=&quot;metric-card&quot;><div class=&quot;mc-label&quot;>BH 底倉 CAGR</div><div class=&quot;mc-val&quot;>12.2%</div></div>
+  <div class=&quot;metric-card&quot;><div class=&quot;mc-label&quot;>加碼觸發次數</div><div class=&quot;mc-val neutral&quot;>20 次</div></div>
+  <div class=&quot;metric-card&quot;><div class=&quot;mc-label&quot;>加碼勝率</div><div class=&quot;mc-val&quot;>100%</div></div>
+  <div class=&quot;metric-card&quot;><div class=&quot;mc-label&quot;>平均加碼報酬</div><div class=&quot;mc-val&quot;>13.6%</div></div>
+  <div class=&quot;metric-card&quot;><div class=&quot;mc-label&quot;>平均持倉天數</div><div class=&quot;mc-val neutral&quot;>177 天</div></div>
+  <div class=&quot;metric-card&quot;><div class=&quot;mc-label&quot;>最長持倉</div><div class=&quot;mc-val highlight&quot;>473 天</div></div>
+</div>
+
+<div class=&quot;kv-grid&quot;>
+  <div class=&quot;kv-card&quot;>
+    <h3>📊 BH 底倉績效（2022–2026）</h3>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>總投入</span><span class=&quot;kv-val&quot;>$52,000</span></div>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>最終市值</span><span class=&quot;kv-val&quot;>$85,329</span></div>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>總報酬率</span><span class=&quot;kv-val green&quot;>+64.1%</span></div>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>CAGR（估算）</span><span class=&quot;kv-val green&quot;>12.2%</span></div>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>最大回撤</span><span class=&quot;kv-val red&quot;>-19.7%</span></div>
+  </div>
+  <div class=&quot;kv-card&quot;>
+    <h3>⚡ 加碼倉績效（20 筆）</h3>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>總加碼投入</span><span class=&quot;kv-val&quot;>$40,000</span></div>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>已實現現金</span><span class=&quot;kv-val&quot;>$45,453</span></div>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>加碼淨損益</span><span class=&quot;kv-val green&quot;>+$5,453</span></div>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>平均報酬</span><span class=&quot;kv-val green&quot;>13.6%</span></div>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>中位數報酬</span><span class=&quot;kv-val green&quot;>12.8%</span></div>
+  </div>
+</div>
+
+<div class=&quot;section-title&quot;>年度分析</div>
+<div class=&quot;alert yellow&quot;>⚠️ <strong>2022 熊市資金壓力</strong>：最多同時開啟 11 筆加碼倉，需佔用 <strong>$22,000</strong>（相當於 22 個月底倉定額）；2022–2023 跨年持倉最長 473 天（約 16 個月）。</div>
+<div class=&quot;alert green&quot;>✅ <strong>2025 關稅恐慌</strong>：2025-04-03 觸發，持倉 55 天報酬 <strong>19.9%</strong>，是 V 型反轉最佳案例。</div>
+<table>
+  <thead><tr>
+    <th>年份</th><th>觸發次數</th><th>已平倉</th><th>最大同時持倉</th><th>平均持倉天數</th><th>平均報酬</th>
+  </tr></thead>
+  <tbody>
+    <tr class=&quot;warn-row&quot;><td><strong>2022</strong></td><td>12</td><td>12</td><td style=&quot;color:#DC2626;font-weight:700&quot;>11 筆（$22,000）</td><td style=&quot;color:#DC2626&quot;>265 天</td><td style=&quot;color:#059669&quot;>13.6%</td></tr>
+    <tr><td>2023</td><td>1</td><td>1</td><td>12（含 2022 延續）</td><td>14 天</td><td style=&quot;color:#059669&quot;>12.1%</td></tr>
+    <tr><td>2024</td><td>2</td><td>2</td><td>2</td><td>55 天</td><td style=&quot;color:#059669&quot;>12.8%</td></tr>
+    <tr><td><strong>2025</strong></td><td>4</td><td>4</td><td>4</td><td style=&quot;color:#059669&quot;>56 天</td><td style=&quot;color:#059669&quot;>14.6%</td></tr>
+    <tr><td>2026</td><td>1</td><td>1</td><td>1</td><td>12 天</td><td style=&quot;color:#059669&quot;>13.3%</td></tr>
+  </tbody>
+</table>
+
+<div class=&quot;section-title&quot;>執行策略：三種情境</div>
+<div class=&quot;scenario-grid&quot;>
+  <div class=&quot;scenario-card&quot;>
+    <span class=&quot;sc-badge calm&quot;>情境 A：平靜期</span>
+    <div class=&quot;sc-title&quot;>距 60 日高點回撤 &amp;lt; 10%</div>
+    <div class=&quot;sc-cond&quot;>且單日跌幅 &amp;lt; 5%，無觸發信號</div>
+    <ul class=&quot;sc-action&quot;>
+      <li>月初定額照常扣款</li>
+      <li>加碼準備金閒置（放貨幣市場基金）</li>
+      <li>不要因「感覺要跌」提早加碼</li>
+    </ul>
+  </div>
+  <div class=&quot;scenario-card&quot;>
+    <span class=&quot;sc-badge trigger&quot;>情境 B：觸發加碼</span>
+    <div class=&quot;sc-title&quot;>單日跌 &amp;gt; 5% 或回撤 &amp;gt; 10%</div>
+    <div class=&quot;sc-cond&quot;>首次觸發（5 日冷卻內不重複）</div>
+    <ul class=&quot;sc-action&quot;>
+      <li>當日收盤買進固定金額（如 $2,000）</li>
+      <li>查詢並記錄目標賣出價（60 日前高）</li>
+      <li>底倉定額繼續扣，互不影響</li>
+      <li>不因隔天繼續跌而後悔</li>
+    </ul>
+  </div>
+  <div class=&quot;scenario-card&quot;>
+    <span class=&quot;sc-badge holding&quot;>情境 C：持倉等待中</span>
+    <div class=&quot;sc-title&quot;>已有加碼倉，尚未回前高</div>
+    <div class=&quot;sc-cond&quot;>等待股價回到目標賣出價</div>
+    <ul class=&quot;sc-action&quot;>
+      <li>底倉繼續月扣，不受影響</li>
+      <li>同時 3 筆以上建議暫停加碼</li>
+      <li>不因浮虧停損（QQQ 長期必然回前高）</li>
+      <li>每週確認一次距前高距離</li>
+    </ul>
+  </div>
+</div>
+
+<div class=&quot;section-title&quot;>資金規劃（以 2022 熊市為壓力測試）</div>
+<table class=&quot;capital-tbl&quot;>
+  <thead><tr>
+    <th>每次加碼金額</th><th>最壞情況同時持倉</th><th>最大資金需求</th><th>建議準備金</th>
+  </tr></thead>
+  <tbody>
+    <tr><td>$1,000</td><td>11 筆</td><td>$11,000</td><td style=&quot;font-weight:700&quot;>$15,000</td></tr>
+    <tr><td>$2,000</td><td>11 筆</td><td>$22,000</td><td style=&quot;font-weight:700&quot;>$30,000</td></tr>
+    <tr><td>$3,000</td><td>11 筆</td><td>$33,000</td><td style=&quot;font-weight:700&quot;>$45,000</td></tr>
+  </tbody>
+</table>
+
+<div class=&quot;alert blue&quot;>
+  <strong>準備金不足時的調整方式</strong><br>
+  ① 調高觸發門檻（回撤 15% 才加碼）→ 觸發次數減少，子彈更精準<br>
+  ② 設同時持倉上限（最多 3 筆）→ 超過上限不觸發，保留彈藥等更深的跌
+</div>
+
+<div class=&quot;section-title&quot;>一句話總結</div>
+<table>
+  <thead><tr><th>狀態</th><th>你要做的事</th></tr></thead>
+  <tbody>
+    <tr><td>平靜期</td><td>月初扣款，其他什麼都不做</td></tr>
+    <tr><td>跌夠深（觸發）</td><td>用準備金加碼，記錄目標賣出價</td></tr>
+    <tr><td>持倉等待中</td><td>繼續扣款，不停損，等回前高自動出場</td></tr>
+    <tr><td>出場後</td><td>把資金放回準備金帳戶，等下一次觸發</td></tr>
+  </tbody>
+</table>
+
+<div class=&quot;section-title&quot;>策略參數與觸發條件</div>
+<div class=&quot;kv-grid&quot;>
+  <div class=&quot;kv-card&quot;>
+    <h3>⚙️ 回測參數</h3>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>回測期間</span><span class=&quot;kv-val&quot;>2022-01-04 ～ 2026-04-23</span></div>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>每月定額（BH）</span><span class=&quot;kv-val&quot;>$1,000</span></div>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>每次加碼金額</span><span class=&quot;kv-val&quot;>$2,000</span></div>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>觸發冷卻</span><span class=&quot;kv-val&quot;>5 個交易日</span></div>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>前高回望窗口</span><span class=&quot;kv-val&quot;>60 個交易日</span></div>
+  </div>
+  <div class=&quot;kv-card&quot;>
+    <h3>🎯 觸發條件（OR 關係）</h3>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>條件一</span><span class=&quot;kv-val warn&quot;>單日跌幅 &amp;gt; 5%</span></div>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>條件二</span><span class=&quot;kv-val warn&quot;>距 60 日高點回撤 &amp;gt; 10%（首次）</span></div>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>出場條件</span><span class=&quot;kv-val green&quot;>股價 ≥ 大跌前高點</span></div>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>前高定義</span><span class=&quot;kv-val&quot;>觸發前 60 交易日最高收盤</span></div>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>適用標的</span><span class=&quot;kv-val&quot;>寬基指數 ETF（QQQ / SPY / 0050）</span></div>
+  </div>
+</div>
+
+<div class=&quot;alert yellow&quot;>⚠️ <strong>重要限制</strong>：勝率 100% 建立在「QQQ 長期必然創新高」的假設上。個股不適用此策略。若標的長期走弱（如科技泡沫後的 QQQ 2000–2013），持倉時間可能超過十年。</div>
+
+<div class=&quot;footer&quot;>tw-backtest-agents · bh_overlay_agent.py · 報告日期：2026-04-24</div>
+</div>
+</body>
+</html>
+"
+              title="BH底倉+逢跌加碼"
               loading="lazy"
               sandbox="allow-scripts allow-same-origin"></iframe>
     </div>
