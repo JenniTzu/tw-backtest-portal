@@ -5,17 +5,12 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>台股美股投資研究平台</title>
 <style>
-/* ── Reset ── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-
-/* ── Body / Layout ── */
 body{
   font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
   background:#F0F4F8;color:#1E293B;
   height:100vh;display:flex;flex-direction:column;overflow:hidden;
 }
-
-/* ── Header ── */
 .portal-header{
   background:linear-gradient(135deg,#1D4ED8 0%,#2563EB 100%);
   padding:13px 28px;display:flex;align-items:center;gap:16px;
@@ -27,8 +22,6 @@ body{
   margin-left:auto;background:rgba(255,255,255,.15);color:#EFF6FF;
   padding:3px 12px;border-radius:20px;font-size:.73rem;white-space:nowrap;
 }
-
-/* ── Tab bar ── */
 .tab-bar{
   display:flex;gap:2px;padding:10px 16px 0;
   background:#fff;border-bottom:2px solid #BFDBFE;
@@ -36,7 +29,6 @@ body{
 }
 .tab-bar::-webkit-scrollbar{height:3px}
 .tab-bar::-webkit-scrollbar-thumb{background:#BFDBFE;border-radius:2px}
-
 .tab-btn{
   display:flex;align-items:center;gap:6px;
   padding:8px 16px;background:transparent;border:none;
@@ -47,21 +39,13 @@ body{
 .tab-btn:hover:not(.active){background:#EFF6FF;color:#3B82F6}
 .tab-btn.active{color:#1D4ED8;border-bottom-color:#1D4ED8;font-weight:700;background:#EFF6FF}
 .tb-icon{font-size:.95rem}
-.tb-name{}
 .tb-badge{
   background:#DBEAFE;color:#1D4ED8;font-size:.63rem;
   padding:1px 7px;border-radius:10px;font-weight:600;
 }
-
-/* ── Panels ── */
 .tab-panel{display:none;flex:1;overflow:hidden}
 .tab-panel.active{display:flex;flex-direction:column}
-.tab-panel iframe{
-  flex:1;width:100%;border:none;
-  background:#fff;
-}
-
-/* ── Footer ── */
+.tab-panel iframe{flex:1;width:100%;border:none;background:#fff}
 .portal-footer{
   padding:7px 24px;background:#fff;border-top:1px solid #E5E7EB;
   font-size:.7rem;color:#9CA3AF;display:flex;gap:12px;align-items:center;
@@ -72,16 +56,14 @@ body{
 </head>
 <body>
 
-<!-- Header -->
 <div class="portal-header">
   <div>
     <h1>📈 台股美股投資研究平台</h1>
     <div class="sub">QQQ × 0050 — 撿便宜策略 · 進出場回測 · 每日信號掃描</div>
   </div>
-  <div class="hbadge">2026-04 更新</div>
+  <div class="hbadge">2026-04-25 更新</div>
 </div>
 
-<!-- Tab bar -->
 <div class="tab-bar">
       <button class="tab-btn active" onclick="switchTab(0, this)">
         <span class="tb-icon">📡</span>
@@ -120,12 +102,21 @@ body{
       </button>
       <button class="tab-btn" onclick="switchTab(7, this)">
         <span class="tb-icon">🛡️</span>
-        <span class="tb-name">BH底倉+逢跌加碼</span>
-        <span class="tb-badge">新策略</span>
+        <span class="tb-name">BH底倉+加碼（QQQ）</span>
+        
+      </button>
+      <button class="tab-btn" onclick="switchTab(8, this)">
+        <span class="tb-icon">🇹🇼</span>
+        <span class="tb-name">BH底倉+加碼（0050）</span>
+        
+      </button>
+      <button class="tab-btn" onclick="switchTab(9, this)">
+        <span class="tb-icon">🔀</span>
+        <span class="tb-name">雙標的資金衝突</span>
+        <span class="tb-badge">新分析</span>
       </button>
 </div>
 
-<!-- Panels -->
 
     <div class="tab-panel active" id="panel-0">
       <iframe srcdoc="<!DOCTYPE html>
@@ -174,7 +165,7 @@ tbody td{padding:9px 12px;text-align:right}
 <body>
 <div class=&quot;header&quot;>
   <h1>📡 市場狀態監控</h1>
-  <div class=&quot;sub&quot;>QQQ × 0050 雙均線系統 ｜ 最後更新：2026-04-24 22:27 ｜ 多頭=Close>60MA且60MA>120MA；空頭=Close<120MA且60MA<120MA</div>
+  <div class=&quot;sub&quot;>QQQ × 0050 雙均線系統 ｜ 最後更新：2026-04-25 22:41 ｜ 多頭=Close>60MA且60MA>120MA；空頭=Close<120MA且60MA<120MA</div>
 </div>
 <div class=&quot;container&quot;>
 
@@ -186,10 +177,10 @@ tbody td{padding:9px 12px;text-align:right}
           <div class=&quot;state-badge&quot; style=&quot;color:#D97706;border-color:#D97706&quot;>🟡 整理</div>
         </div>
         <div class=&quot;metrics&quot;>
-          <div class=&quot;metric&quot;><span class=&quot;mlabel&quot;>收盤價</span><span class=&quot;mval&quot;>651.42</span></div>
-          <div class=&quot;metric&quot;><span class=&quot;mlabel&quot;>距高點</span><span class=&quot;mval&quot; style=&quot;color:#374151&quot;>-0.6%</span></div>
-          <div class=&quot;metric&quot;><span class=&quot;mlabel&quot;>vs 60MA</span><span class=&quot;mval&quot; style=&quot;color:#059669&quot;>+7.4%</span></div>
-          <div class=&quot;metric&quot;><span class=&quot;mlabel&quot;>60MA</span><span class=&quot;mval&quot;>606.79</span></div>
+          <div class=&quot;metric&quot;><span class=&quot;mlabel&quot;>收盤價</span><span class=&quot;mval&quot;>663.88</span></div>
+          <div class=&quot;metric&quot;><span class=&quot;mlabel&quot;>距高點</span><span class=&quot;mval&quot; style=&quot;color:#374151&quot;>+0.0%</span></div>
+          <div class=&quot;metric&quot;><span class=&quot;mlabel&quot;>vs 60MA</span><span class=&quot;mval&quot; style=&quot;color:#059669&quot;>+9.3%</span></div>
+          <div class=&quot;metric&quot;><span class=&quot;mlabel&quot;>60MA</span><span class=&quot;mval&quot;>607.31</span></div>
         </div>
         
         
@@ -203,8 +194,8 @@ tbody td{padding:9px 12px;text-align:right}
         <div class=&quot;metrics&quot;>
           <div class=&quot;metric&quot;><span class=&quot;mlabel&quot;>收盤價</span><span class=&quot;mval&quot;>86.35</span></div>
           <div class=&quot;metric&quot;><span class=&quot;mlabel&quot;>距高點</span><span class=&quot;mval&quot; style=&quot;color:#374151&quot;>+0.0%</span></div>
-          <div class=&quot;metric&quot;><span class=&quot;mlabel&quot;>vs 60MA</span><span class=&quot;mval&quot; style=&quot;color:#059669&quot;>+13.1%</span></div>
-          <div class=&quot;metric&quot;><span class=&quot;mlabel&quot;>60MA</span><span class=&quot;mval&quot;>76.36</span></div>
+          <div class=&quot;metric&quot;><span class=&quot;mlabel&quot;>vs 60MA</span><span class=&quot;mval&quot; style=&quot;color:#059669&quot;>+12.7%</span></div>
+          <div class=&quot;metric&quot;><span class=&quot;mlabel&quot;>60MA</span><span class=&quot;mval&quot;>76.64</span></div>
         </div>
         
         
@@ -212,7 +203,7 @@ tbody td{padding:9px 12px;text-align:right}
       </div>
   </div>
 
-  <div class=&quot;section-title&quot;>近期歷史紀錄（最近 6 筆）</div>
+  <div class=&quot;section-title&quot;>近期歷史紀錄（最近 8 筆）</div>
   <div class=&quot;tbl-wrap&quot;>
     <table>
       <thead><tr>
@@ -220,6 +211,24 @@ tbody td{padding:9px 12px;text-align:right}
         <th>距高點</th><th>vs 60MA</th><th>市場狀態</th><th>信號</th>
       </tr></thead>
       <tbody>
+        <tr>
+          <td>2026-04-25</td>
+          <td><strong>0050</strong></td>
+          <td>86.35</td>
+          <td style=&quot;color:#374151&quot;>+0.0%</td>
+          <td style=&quot;color:#059669&quot;>+12.7%</td>
+          <td style=&quot;color:#059669;font-weight:600&quot;>🟢 多頭</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>2026-04-25</td>
+          <td><strong>QQQ</strong></td>
+          <td>663.88</td>
+          <td style=&quot;color:#374151&quot;>+0.0%</td>
+          <td style=&quot;color:#059669&quot;>+9.3%</td>
+          <td style=&quot;color:#D97706;font-weight:600&quot;>🟡 整理</td>
+          <td></td>
+        </tr>
         <tr>
           <td>2026-04-24</td>
           <td><strong>0050</strong></td>
@@ -3383,18 +3392,384 @@ td.warn-row{background:#FFFBEB!important}
 </body>
 </html>
 "
-              title="BH底倉+逢跌加碼"
+              title="BH底倉+加碼（QQQ）"
+              loading="lazy"
+              sandbox="allow-scripts allow-same-origin"></iframe>
+    </div>
+    <div class="tab-panel" id="panel-8">
+      <iframe srcdoc="<!DOCTYPE html>
+<html lang=&quot;zh-TW&quot;>
+<head>
+<meta charset=&quot;UTF-8&quot;>
+<meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;>
+<title>0050 BH底倉+逢跌加碼回復出場</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:#F0F4F8;color:#1E293B;line-height:1.6}
+.header{background:linear-gradient(135deg,#1D4ED8 0%,#2563EB 100%);padding:28px 32px;border-bottom:2px solid #1E40AF}
+.header h1{font-size:1.2rem;font-weight:800;color:#fff}
+.header .sub{color:#BFDBFE;font-size:.8rem;margin-top:4px}
+.container{max-width:960px;margin:0 auto;padding:28px 20px}
+.section-title{font-size:.78rem;text-transform:uppercase;letter-spacing:.07em;color:#6B7280;font-weight:600;margin-bottom:12px;margin-top:28px}
+.metrics-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:12px;margin-bottom:8px}
+.metric-card{background:#fff;border-radius:10px;padding:16px 18px;border:1px solid #E5E7EB}
+.mc-label{font-size:.68rem;color:#9CA3AF;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
+.mc-val{font-size:1.25rem;font-weight:800;color:#059669}
+.mc-val.highlight{color:#DC2626}
+.mc-val.neutral{color:#1E293B}
+.mc-val.warn{color:#D97706}
+.kv-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:8px}
+.kv-card{background:#fff;border-radius:10px;padding:20px;border:1px solid #E5E7EB}
+.kv-card h3{font-size:.82rem;font-weight:700;color:#374151;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #F1F5F9}
+.kv-row{display:flex;justify-content:space-between;padding:5px 0;font-size:.83rem;border-bottom:1px solid #F9FAFB}
+.kv-row:last-child{border-bottom:none}
+.kv-key{color:#6B7280}
+.kv-val{font-weight:600;color:#1E293B}
+.kv-val.green{color:#059669}
+.kv-val.red{color:#DC2626}
+.kv-val.warn{color:#D97706}
+table{width:100%;border-collapse:collapse;background:#fff;border-radius:10px;overflow:hidden;font-size:.83rem;margin-bottom:8px}
+thead{background:#1D4ED8;color:#fff}
+thead th{padding:10px 12px;text-align:right;font-size:.72rem;text-transform:uppercase;letter-spacing:.05em}
+thead th:first-child,tbody td:first-child{text-align:left}
+tbody tr{border-bottom:1px solid #F1F5F9}
+tbody tr:last-child{border-bottom:none}
+tbody tr:hover{background:#EFF6FF}
+tbody td{padding:9px 12px;text-align:right}
+tr.warn-row{background:#FFFBEB!important}
+tr.good-row{background:#ECFDF5!important}
+tr.extreme-row{background:#FEF2F2!important}
+.alert{border-radius:10px;padding:16px 20px;margin-bottom:16px;font-size:.85rem;line-height:1.7}
+.alert.green{background:#D1FAE5;border-left:4px solid #059669;color:#065F46}
+.alert.yellow{background:#FEF3C7;border-left:4px solid #D97706;color:#92400E}
+.alert.red{background:#FEF2F2;border-left:4px solid #DC2626;color:#991B1B}
+.alert.blue{background:#DBEAFE;border-left:4px solid #1D4ED8;color:#1E40AF}
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:8px}
+.compare-card{background:#fff;border-radius:10px;padding:20px;border:2px solid #E5E7EB}
+.compare-card.tw{border-color:#1D4ED8}
+.compare-card.us{border-color:#059669}
+.compare-card h3{font-size:.85rem;font-weight:700;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #F1F5F9}
+.compare-card.tw h3{color:#1D4ED8}
+.compare-card.us h3{color:#059669}
+.footer{text-align:center;font-size:.7rem;color:#9CA3AF;padding:24px;margin-top:8px}
+</style>
+</head>
+<body>
+<div class=&quot;header&quot;>
+  <h1>🇹🇼 0050 BH底倉 + 逢跌加碼回復出場策略</h1>
+  <div class=&quot;sub&quot;>元大台灣50 ETF 回測 2010-01-05 ～ 2026-04-23（16.3 年）｜月投 NT$3,000 + 每次加碼 NT$6,000</div>
+</div>
+<div class=&quot;container&quot;>
+
+<div class=&quot;section-title&quot;>策略總覽</div>
+<div class=&quot;metrics-row&quot;>
+  <div class=&quot;metric-card&quot;><div class=&quot;mc-label&quot;>BH 底倉 CAGR</div><div class=&quot;mc-val&quot;>9.1%</div></div>
+  <div class=&quot;metric-card&quot;><div class=&quot;mc-label&quot;>加碼觸發次數</div><div class=&quot;mc-val neutral&quot;>45 次</div></div>
+  <div class=&quot;metric-card&quot;><div class=&quot;mc-label&quot;>加碼勝率</div><div class=&quot;mc-val&quot;>100%</div></div>
+  <div class=&quot;metric-card&quot;><div class=&quot;mc-label&quot;>中位數報酬</div><div class=&quot;mc-val&quot;>12.9%</div></div>
+  <div class=&quot;metric-card&quot;><div class=&quot;mc-label&quot;>平均持倉天數</div><div class=&quot;mc-val warn&quot;>265 天</div></div>
+  <div class=&quot;metric-card&quot;><div class=&quot;mc-label&quot;>最長持倉</div><div class=&quot;mc-val highlight&quot;>3,095 天</div></div>
+</div>
+
+<div class=&quot;alert red&quot;>⚠️ <strong>極端風險警示</strong>：0050 最長持倉 <strong>3,095 天（8.5 年！）</strong>，發生於 2011 美國信評下調後。台股結構性長期盤整（2011–2016）是根本原因。請確認你的資金在至少 3 年內不需要動用。</div>
+
+<div class=&quot;kv-grid&quot;>
+  <div class=&quot;kv-card&quot;>
+    <h3>📊 BH 底倉績效（2010–2026）</h3>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>總投入</span><span class=&quot;kv-val&quot;>NT$588,000</span></div>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>最終市值</span><span class=&quot;kv-val&quot;>NT$2,428,480</span></div>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>總報酬率</span><span class=&quot;kv-val green&quot;>+313.0%</span></div>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>CAGR（估算）</span><span class=&quot;kv-val green&quot;>9.1%</span></div>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>最大回撤（調整後）</span><span class=&quot;kv-val warn&quot;>-73.6%</span></div>
+  </div>
+  <div class=&quot;kv-card&quot;>
+    <h3>⚡ 加碼倉績效（45 筆）</h3>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>總加碼投入</span><span class=&quot;kv-val&quot;>NT$270,000</span></div>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>已實現現金</span><span class=&quot;kv-val&quot;>NT$325,717</span></div>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>加碼淨損益</span><span class=&quot;kv-val green&quot;>+NT$55,717</span></div>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>平均報酬（含異常值）</span><span class=&quot;kv-val warn&quot;>20.6%</span></div>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>中位數報酬（更可靠）</span><span class=&quot;kv-val green&quot;>12.9%</span></div>
+  </div>
+</div>
+
+<div class=&quot;section-title&quot;>年度分析</div>
+<div class=&quot;alert yellow&quot;>⚠️ <strong>2022 熊市</strong>：最多同時 9 筆加碼倉（NT$54,000），平均等 334 天才出場。</div>
+<div class=&quot;alert green&quot;>✅ <strong>2020 COVID V型</strong>：4 次觸發平均 79 天出場，平均報酬 18.3%。</div>
+<table>
+  <thead><tr>
+    <th>年份</th><th>觸發次數</th><th>最大同時持倉</th><th>平均持倉天數</th><th>平均報酬</th><th>備註</th>
+  </tr></thead>
+  <tbody>
+    <tr><td>2010</td><td>4</td><td>4</td><td>114 天</td><td style=&quot;color:#059669&quot;>13.2%</td><td></td></tr>
+    <tr class=&quot;extreme-row&quot;><td><strong>2011</strong></td><td>3</td><td>3</td><td style=&quot;color:#DC2626;font-weight:700&quot;>1,065 天</td><td style=&quot;color:#059669&quot;>14.1%</td><td>含 3,095 天極端案例</td></tr>
+    <tr><td>2012</td><td>7</td><td style=&quot;color:#DC2626;font-weight:700&quot;>7</td><td>115 天</td><td style=&quot;color:#059669&quot;>12.0%</td><td></td></tr>
+    <tr><td>2013</td><td>0</td><td>7（延續）</td><td>—</td><td>—</td><td>2012 倉位仍開著</td></tr>
+    <tr class=&quot;extreme-row&quot;><td><strong>2014</strong></td><td>1</td><td>2</td><td style=&quot;color:#DC2626;font-weight:700&quot;>2,488 天</td><td style=&quot;color:#059669;font-weight:700&quot;>310.1%</td><td>股息調整異常值</td></tr>
+    <tr><td>2015</td><td>3</td><td>5</td><td>209 天</td><td style=&quot;color:#059669&quot;>12.7%</td><td></td></tr>
+    <tr><td>2016</td><td>1</td><td>6</td><td>114 天</td><td style=&quot;color:#059669&quot;>13.3%</td><td></td></tr>
+    <tr><td>2017</td><td>0</td><td>2（延續）</td><td>—</td><td>—</td><td>牛市無觸發</td></tr>
+    <tr><td>2018</td><td>4</td><td>6</td><td>207 天</td><td style=&quot;color:#059669&quot;>12.8%</td><td>中美貿易戰</td></tr>
+    <tr><td>2019</td><td>1</td><td>7</td><td>58 天</td><td style=&quot;color:#059669&quot;>13.3%</td><td></td></tr>
+    <tr class=&quot;good-row&quot;><td><strong>2020</strong></td><td>4</td><td>6</td><td style=&quot;color:#059669&quot;>79 天</td><td style=&quot;color:#059669;font-weight:700&quot;>18.3%</td><td>COVID V型反彈</td></tr>
+    <tr><td>2021</td><td>1</td><td>3</td><td>42 天</td><td style=&quot;color:#059669&quot;>12.1%</td><td></td></tr>
+    <tr class=&quot;warn-row&quot;><td><strong>2022</strong></td><td>7</td><td style=&quot;color:#DC2626;font-weight:700&quot;>9 筆（NT$54K）</td><td style=&quot;color:#DC2626&quot;>334 天</td><td style=&quot;color:#059669&quot;>16.2%</td><td>緩跌熊市壓力</td></tr>
+    <tr><td>2023</td><td>0</td><td>9（延續）</td><td>—</td><td>—</td><td>2022 倉位陸續出場</td></tr>
+    <tr><td>2024</td><td>5</td><td>6</td><td>82 天</td><td style=&quot;color:#059669&quot;>11.9%</td><td>AI 牛市修正</td></tr>
+    <tr class=&quot;good-row&quot;><td><strong>2025</strong></td><td>3</td><td>4</td><td style=&quot;color:#059669&quot;>77 天</td><td style=&quot;color:#059669;font-weight:700&quot;>16.7%</td><td>關稅恐慌 V型</td></tr>
+    <tr><td>2026</td><td>1</td><td>1</td><td>8 天</td><td style=&quot;color:#059669&quot;>14.9%</td><td></td></tr>
+  </tbody>
+</table>
+
+<div class=&quot;section-title&quot;>0050 vs QQQ 策略對比</div>
+<div class=&quot;compare-grid&quot;>
+  <div class=&quot;compare-card tw&quot;>
+    <h3>🇹🇼 0050（台股）</h3>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>回測期間</span><span class=&quot;kv-val&quot;>16.3 年</span></div>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>觸發次數</span><span class=&quot;kv-val&quot;>45 次</span></div>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>中位數報酬</span><span class=&quot;kv-val green&quot;>12.9%</span></div>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>最長持倉</span><span class=&quot;kv-val red&quot;>3,095 天</span></div>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>最大同時持倉</span><span class=&quot;kv-val warn&quot;>9 筆（NT$54K）</span></div>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>BH CAGR</span><span class=&quot;kv-val green&quot;>9.1%</span></div>
+  </div>
+  <div class=&quot;compare-card us&quot;>
+    <h3>🇺🇸 QQQ（美股）</h3>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>回測期間</span><span class=&quot;kv-val&quot;>4.3 年</span></div>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>觸發次數</span><span class=&quot;kv-val&quot;>20 次</span></div>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>中位數報酬</span><span class=&quot;kv-val green&quot;>12.8%</span></div>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>最長持倉</span><span class=&quot;kv-val warn&quot;>473 天</span></div>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>最大同時持倉</span><span class=&quot;kv-val warn&quot;>11 筆（$22K）</span></div>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>BH CAGR</span><span class=&quot;kv-val green&quot;>12.2%</span></div>
+  </div>
+</div>
+<div class=&quot;alert blue&quot;>📌 <strong>核心發現</strong>：兩市場的中位數報酬幾乎相同（12.8–12.9%），但 0050 的持倉時間風險遠高於 QQQ。<strong>台股結構性長期盤整（2011–2016）</strong>造成部分加碼倉需等待 8 年以上，QQQ 最壞情況僅 16 個月。</div>
+
+<div class=&quot;section-title&quot;>0050 修正建議</div>
+<table>
+  <thead><tr><th>建議</th><th>原始設定</th><th>建議調整</th><th>預期效果</th></tr></thead>
+  <tbody>
+    <tr><td>提高回撤門檻</td><td>10%</td><td><strong>15%</strong></td><td>觸發次數減 30–40%，進場點更深</td></tr>
+    <tr><td>提高單日跌幅門檻</td><td>5%</td><td><strong>7%</strong></td><td>減少小回調誤觸發</td></tr>
+    <tr><td>設持倉上限年限</td><td>無限</td><td><strong>持倉 > 3 年轉底倉</strong></td><td>避免機會成本超過 3 年</td></tr>
+  </tbody>
+</table>
+
+<div class=&quot;section-title&quot;>資金規劃（2022 壓力測試：最多 9 筆）</div>
+<table>
+  <thead><tr><th>每次加碼金額</th><th>最大資金需求</th><th>建議準備金</th></tr></thead>
+  <tbody>
+    <tr><td>NT$3,000</td><td>NT$27,000</td><td style=&quot;font-weight:700&quot;>NT$36,000</td></tr>
+    <tr><td>NT$6,000</td><td>NT$54,000</td><td style=&quot;font-weight:700&quot;>NT$72,000</td></tr>
+    <tr><td>NT$10,000</td><td>NT$90,000</td><td style=&quot;font-weight:700&quot;>NT$120,000</td></tr>
+  </tbody>
+</table>
+
+<div class=&quot;alert yellow&quot;>⚠️ <strong>重要限制</strong>：100% 勝率建立在「0050 長期必然回前高」的假設上。台股曾有 2011–2016 長達 5 年的盤整期，2011 年觸發後需等待 8.5 年。投資前請確認資金至少 3–5 年不需動用。</div>
+
+<div class=&quot;footer&quot;>tw-backtest-agents · bh_overlay_agent.py · 報告日期：2026-04-25</div>
+</div>
+</body>
+</html>
+"
+              title="BH底倉+加碼（0050）"
+              loading="lazy"
+              sandbox="allow-scripts allow-same-origin"></iframe>
+    </div>
+    <div class="tab-panel" id="panel-9">
+      <iframe srcdoc="<!DOCTYPE html>
+<html lang=&quot;zh-TW&quot;>
+<head>
+<meta charset=&quot;UTF-8&quot;>
+<meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;>
+<title>QQQ+0050 雙標的資金衝突分析</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:#F0F4F8;color:#1E293B;line-height:1.6}
+.header{background:linear-gradient(135deg,#7C3AED 0%,#6D28D9 100%);padding:28px 32px;border-bottom:2px solid #5B21B6}
+.header h1{font-size:1.2rem;font-weight:800;color:#fff}
+.header .sub{color:#DDD6FE;font-size:.8rem;margin-top:4px}
+.container{max-width:960px;margin:0 auto;padding:28px 20px}
+.section-title{font-size:.78rem;text-transform:uppercase;letter-spacing:.07em;color:#6B7280;font-weight:600;margin-bottom:12px;margin-top:28px}
+.metrics-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:12px;margin-bottom:8px}
+.metric-card{background:#fff;border-radius:10px;padding:16px 18px;border:1px solid #E5E7EB}
+.mc-label{font-size:.68rem;color:#9CA3AF;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
+.mc-val{font-size:1.25rem;font-weight:800;color:#7C3AED}
+.mc-val.red{color:#DC2626}
+.mc-val.green{color:#059669}
+.mc-val.neutral{color:#1E293B}
+.kv-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:8px}
+.kv-card{background:#fff;border-radius:10px;padding:20px;border:1px solid #E5E7EB}
+.kv-card h3{font-size:.82rem;font-weight:700;color:#374151;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #F1F5F9}
+.kv-row{display:flex;justify-content:space-between;padding:5px 0;font-size:.83rem;border-bottom:1px solid #F9FAFB}
+.kv-row:last-child{border-bottom:none}
+.kv-key{color:#6B7280}.kv-val{font-weight:600;color:#1E293B}
+.kv-val.purple{color:#7C3AED}.kv-val.red{color:#DC2626}.kv-val.green{color:#059669}
+table{width:100%;border-collapse:collapse;background:#fff;border-radius:10px;overflow:hidden;font-size:.83rem;margin-bottom:8px}
+thead{background:#6D28D9;color:#fff}
+thead th{padding:10px 12px;text-align:right;font-size:.72rem;text-transform:uppercase;letter-spacing:.05em}
+thead th:first-child,tbody td:first-child{text-align:left}
+tbody tr{border-bottom:1px solid #F1F5F9}
+tbody tr:last-child{border-bottom:none}
+tbody tr:hover{background:#F5F3FF}
+tbody td{padding:9px 12px;text-align:right}
+tr.warn-row{background:#FFFBEB!important}
+tr.extreme-row{background:#FEF2F2!important}
+tr.ok-row{background:#ECFDF5!important}
+.alert{border-radius:10px;padding:16px 20px;margin-bottom:16px;font-size:.85rem;line-height:1.7}
+.alert.yellow{background:#FEF3C7;border-left:4px solid #D97706;color:#92400E}
+.alert.red{background:#FEF2F2;border-left:4px solid #DC2626;color:#991B1B}
+.alert.green{background:#D1FAE5;border-left:4px solid #059669;color:#065F46}
+.alert.purple{background:#F5F3FF;border-left:4px solid #7C3AED;color:#4C1D95}
+/* bar chart */
+.bar-wrap{display:flex;align-items:center;gap:8px;margin-bottom:5px}
+.bar-label{font-size:.78rem;color:#6B7280;width:36px;text-align:right;flex-shrink:0}
+.bar-track{flex:1;background:#EDE9FE;border-radius:4px;height:18px;overflow:hidden}
+.bar-fill{height:100%;border-radius:4px;background:#7C3AED;transition:width .3s}
+.bar-fill.warn{background:#D97706}
+.bar-fill.red{background:#DC2626}
+.bar-val{font-size:.78rem;font-weight:700;color:#374151;width:90px;text-align:right;flex-shrink:0}
+/* reserve table */
+.reserve-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:8px}
+.reserve-card{background:#fff;border-radius:10px;padding:18px;border:1px solid #E5E7EB;text-align:center}
+.rc-amount{font-size:1.05rem;font-weight:800;color:#7C3AED;margin-bottom:8px}
+.rc-row{font-size:.8rem;color:#6B7280;margin-bottom:3px}
+.rc-row span{font-weight:700;color:#1E293B}
+.rc-coverage{font-size:.72rem;margin-top:8px;padding:3px 8px;border-radius:12px;display:inline-block}
+.rc-coverage.ok{background:#D1FAE5;color:#065F46}
+.rc-coverage.warn{background:#FEF3C7;color:#92400E}
+.rc-coverage.no{background:#FEF2F2;color:#991B1B}
+.footer{text-align:center;font-size:.7rem;color:#9CA3AF;padding:24px;margin-top:8px}
+</style>
+</head>
+<body>
+<div class=&quot;header&quot;>
+  <h1>🔀 QQQ + 0050 雙標的資金衝突分析</h1>
+  <div class=&quot;sub&quot;>同時執行 BH Overlay 策略時的準備金規劃 ｜ 2015–2026 回測期間 ｜ 每筆加碼 NT$6,000</div>
+</div>
+<div class=&quot;container&quot;>
+
+<div class=&quot;section-title&quot;>核心風險數字</div>
+<div class=&quot;metrics-row&quot;>
+  <div class=&quot;metric-card&quot;><div class=&quot;mc-label&quot;>QQQ 觸發次數</div><div class=&quot;mc-val neutral&quot;>41 次</div></div>
+  <div class=&quot;metric-card&quot;><div class=&quot;mc-label&quot;>0050 觸發次數</div><div class=&quot;mc-val neutral&quot;>30 次</div></div>
+  <div class=&quot;metric-card&quot;><div class=&quot;mc-label&quot;>同日雙觸發</div><div class=&quot;mc-val&quot;>2 次</div></div>
+  <div class=&quot;metric-card&quot;><div class=&quot;mc-label&quot;>3日內交錯觸發</div><div class=&quot;mc-val&quot;>7 次</div></div>
+  <div class=&quot;metric-card&quot;><div class=&quot;mc-label&quot;>最大同時持倉</div><div class=&quot;mc-val red&quot;>18 筆</div></div>
+  <div class=&quot;metric-card&quot;><div class=&quot;mc-label&quot;>最大準備金需求</div><div class=&quot;mc-val red&quot;>NT$108K</div></div>
+</div>
+
+<div class=&quot;alert purple&quot;>📌 <strong>結論先說</strong>：同日雙觸發的機率低（11 年 2 次），但 2022 熊市造成兩個標的合計 18 筆加碼倉同時開著，準備金需求高達 <strong>NT$108,000</strong>。準備金 NT$120,000 可以覆蓋歷史最壞情況。</div>
+
+<div class=&quot;section-title&quot;>同日 / 交錯觸發明細</div>
+<div class=&quot;kv-grid&quot;>
+  <div class=&quot;kv-card&quot;>
+    <h3>⚡ 同日雙觸發（2 次）</h3>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>2018-12-04</span><span class=&quot;kv-val red&quot;>QQQ + 0050 同日觸發</span></div>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>2024-08-02</span><span class=&quot;kv-val red&quot;>QQQ + 0050 同日觸發</span></div>
+  </div>
+  <div class=&quot;kv-card&quot;>
+    <h3>🔁 3日內交錯觸發（7 次）</h3>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>2018-10-23/24</span><span class=&quot;kv-val&quot;>0050 → QQQ（1天）</span></div>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>2018-11-09/12</span><span class=&quot;kv-val&quot;>0050 → QQQ（3天）</span></div>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>2018-12-04</span><span class=&quot;kv-val&quot;>同日（含上）</span></div>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>2020-03-09/12</span><span class=&quot;kv-val&quot;>0050 → QQQ（3天）</span></div>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>2024-08-02</span><span class=&quot;kv-val&quot;>同日（含上）</span></div>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>2025-03-10/13</span><span class=&quot;kv-val&quot;>QQQ → 0050（3天）</span></div>
+    <div class=&quot;kv-row&quot;><span class=&quot;kv-key&quot;>2025-03-26/27</span><span class=&quot;kv-val&quot;>QQQ → 0050（1天）</span></div>
+  </div>
+</div>
+<div class=&quot;alert green&quot;>✅ <strong>好消息</strong>：11 年內同日雙觸發僅 2 次（約每 5 年一次），整體資金衝突頻率低。多數時間兩標的觸發時間錯開，對準備金壓力有限。</div>
+
+<div class=&quot;section-title&quot;>每年最大同時持倉（雙標的合計）</div>
+
+<div style=&quot;background:#fff;border-radius:10px;padding:20px;border:1px solid #E5E7EB;margin-bottom:8px&quot;>
+  <div class=&quot;bar-wrap&quot;><span class=&quot;bar-label&quot;>2015</span><div class=&quot;bar-track&quot;><div class=&quot;bar-fill&quot; style=&quot;width:33%&quot;></div></div><span class=&quot;bar-val&quot;>6 筆 NT$36K</span></div>
+  <div class=&quot;bar-wrap&quot;><span class=&quot;bar-label&quot;>2016</span><div class=&quot;bar-track&quot;><div class=&quot;bar-fill&quot; style=&quot;width:44%&quot;></div></div><span class=&quot;bar-val&quot;>8 筆 NT$48K</span></div>
+  <div class=&quot;bar-wrap&quot;><span class=&quot;bar-label&quot;>2017</span><div class=&quot;bar-track&quot;><div class=&quot;bar-fill&quot; style=&quot;width:0%&quot;></div></div><span class=&quot;bar-val&quot; style=&quot;color:#9CA3AF&quot;>0 筆 —</span></div>
+  <div class=&quot;bar-wrap&quot;><span class=&quot;bar-label&quot;>2018</span><div class=&quot;bar-track&quot;><div class=&quot;bar-fill&quot; style=&quot;width:39%&quot;></div></div><span class=&quot;bar-val&quot;>7 筆 NT$42K</span></div>
+  <div class=&quot;bar-wrap&quot;><span class=&quot;bar-label&quot;>2019</span><div class=&quot;bar-track&quot;><div class=&quot;bar-fill&quot; style=&quot;width:44%&quot;></div></div><span class=&quot;bar-val&quot;>8 筆 NT$48K</span></div>
+  <div class=&quot;bar-wrap&quot;><span class=&quot;bar-label&quot;>2020</span><div class=&quot;bar-track&quot;><div class=&quot;bar-fill&quot; style=&quot;width:50%&quot;></div></div><span class=&quot;bar-val&quot;>9 筆 NT$54K</span></div>
+  <div class=&quot;bar-wrap&quot;><span class=&quot;bar-label&quot;>2021</span><div class=&quot;bar-track&quot;><div class=&quot;bar-fill&quot; style=&quot;width:6%&quot;></div></div><span class=&quot;bar-val&quot;>1 筆 NT$6K</span></div>
+  <div class=&quot;bar-wrap&quot;><span class=&quot;bar-label&quot;>2022</span><div class=&quot;bar-track&quot;><div class=&quot;bar-fill warn&quot; style=&quot;width:94%&quot;></div></div><span class=&quot;bar-val warn&quot; style=&quot;color:#D97706;font-weight:700&quot;>17 筆 NT$102K</span></div>
+  <div class=&quot;bar-wrap&quot;><span class=&quot;bar-label&quot;>2023</span><div class=&quot;bar-track&quot;><div class=&quot;bar-fill red&quot; style=&quot;width:100%&quot;></div></div><span class=&quot;bar-val red&quot;>18 筆 NT$108K ⬅ 最高</span></div>
+  <div class=&quot;bar-wrap&quot;><span class=&quot;bar-label&quot;>2024</span><div class=&quot;bar-track&quot;><div class=&quot;bar-fill&quot; style=&quot;width:33%&quot;></div></div><span class=&quot;bar-val&quot;>6 筆 NT$36K</span></div>
+  <div class=&quot;bar-wrap&quot;><span class=&quot;bar-label&quot;>2025</span><div class=&quot;bar-track&quot;><div class=&quot;bar-fill&quot; style=&quot;width:39%&quot;></div></div><span class=&quot;bar-val&quot;>7 筆 NT$42K</span></div>
+  <div class=&quot;bar-wrap&quot;><span class=&quot;bar-label&quot;>2026</span><div class=&quot;bar-track&quot;><div class=&quot;bar-fill&quot; style=&quot;width:11%&quot;></div></div><span class=&quot;bar-val&quot;>2 筆 NT$12K</span></div>
+</div>
+
+<div class=&quot;alert yellow&quot;>⚠️ <strong>2022–2023 是壓力測試極值</strong>：QQQ 2022 緩跌熊市 + 0050 同期的多次觸發，導致兩標的倉位堆疊，合計 18 筆同時開著。這是 11 年最壞情況。</div>
+
+<div class=&quot;section-title&quot;>準備金規劃建議</div>
+<div class=&quot;reserve-grid&quot;>
+  <div class=&quot;reserve-card&quot;>
+    <div class=&quot;rc-amount&quot;>NT$60,000</div>
+    <div class=&quot;rc-row&quot;>QQQ 上限：<span>5 筆</span></div>
+    <div class=&quot;rc-row&quot;>0050 上限：<span>5 筆</span></div>
+    <div class=&quot;rc-row&quot;>緩衝：<span>0 筆</span></div>
+    <div class=&quot;rc-coverage no&quot;>無法覆蓋 2022–2023</div>
+  </div>
+  <div class=&quot;reserve-card&quot;>
+    <div class=&quot;rc-amount&quot;>NT$90,000</div>
+    <div class=&quot;rc-row&quot;>QQQ 上限：<span>7 筆</span></div>
+    <div class=&quot;rc-row&quot;>0050 上限：<span>7 筆</span></div>
+    <div class=&quot;rc-row&quot;>緩衝：<span>1 筆</span></div>
+    <div class=&quot;rc-coverage warn&quot;>覆蓋 80% 年份</div>
+  </div>
+  <div class=&quot;reserve-card&quot;>
+    <div class=&quot;rc-amount&quot; style=&quot;color:#059669&quot;>NT$120,000</div>
+    <div class=&quot;rc-row&quot;>QQQ 上限：<span>10 筆</span></div>
+    <div class=&quot;rc-row&quot;>0050 上限：<span>10 筆</span></div>
+    <div class=&quot;rc-row&quot;>緩衝：<span>0 筆</span></div>
+    <div class=&quot;rc-coverage ok&quot;>✅ 覆蓋歷史最壞情況</div>
+  </div>
+  <div class=&quot;reserve-card&quot;>
+    <div class=&quot;rc-amount&quot;>NT$150,000</div>
+    <div class=&quot;rc-row&quot;>QQQ 上限：<span>12 筆</span></div>
+    <div class=&quot;rc-row&quot;>0050 上限：<span>12 筆</span></div>
+    <div class=&quot;rc-row&quot;>緩衝：<span>1 筆</span></div>
+    <div class=&quot;rc-coverage ok&quot;>✅ 有緩衝餘裕</div>
+  </div>
+</div>
+
+<div class=&quot;section-title&quot;>同日雙觸發時的優先級建議</div>
+<table>
+  <thead><tr><th>情境</th><th>建議動作</th><th>理由</th></tr></thead>
+  <tbody>
+    <tr class=&quot;ok-row&quot;><td>只有 QQQ 觸發</td><td>正常加碼 QQQ</td><td>長期 CAGR 12.2%，優先執行</td></tr>
+    <tr class=&quot;ok-row&quot;><td>只有 0050 觸發</td><td>正常加碼 0050</td><td>本土貨幣，無匯率風險</td></tr>
+    <tr class=&quot;warn-row&quot;><td><strong>同日雙觸發</strong></td><td>兩個都買，各 1 筆</td><td>歷史上僅 2 次，準備金足夠時都執行</td></tr>
+    <tr class=&quot;extreme-row&quot;><td>準備金剩餘不足</td><td>QQQ 優先，0050 跳過</td><td>QQQ CAGR 較高；0050 下次再觸發機率高</td></tr>
+    <tr><td>已達同時持倉上限</td><td>暫停加碼，等出場後再繼續</td><td>不超出設定的準備金上限</td></tr>
+  </tbody>
+</table>
+
+<div class=&quot;section-title&quot;>執行總結</div>
+<table>
+  <thead><tr><th>問題</th><th>答案</th></tr></thead>
+  <tbody>
+    <tr><td>兩標的會同時觸發嗎？</td><td>會，11 年發生 2 次（同日），7 次 3 天內相鄰</td></tr>
+    <tr><td>最壞情況需要多少準備金？</td><td>NT$108,000（2023-01-05，18 筆同時）</td></tr>
+    <tr><td>建議準備金是多少？</td><td><strong>NT$120,000</strong>（可覆蓋歷史極值）</td></tr>
+    <tr><td>同時觸發時哪個優先？</td><td>兩個都買；不夠時 QQQ 優先</td></tr>
+    <tr><td>需要特別的複雜演算法嗎？</td><td>不需要，簡單規則就夠</td></tr>
+  </tbody>
+</table>
+
+<div class=&quot;footer&quot;>tw-backtest-agents · multi_overlay.py · 分析期間：2015–2026 ｜ 報告日期：2026-04-25</div>
+</div>
+</body>
+</html>
+"
+              title="雙標的資金衝突"
               loading="lazy"
               sandbox="allow-scripts allow-same-origin"></iframe>
     </div>
 
-<!-- Footer -->
 <div class="portal-footer">
   <span>tw-backtest-agents</span>
   <span>·</span>
   <span>資料來源：yfinance</span>
   <span>·</span>
-  <span>最後更新：2026-04-24</span>
+  <span>最後更新：2026-04-25</span>
   <span class="pf-tip">點擊上方 Tab 切換報告</span>
 </div>
 
